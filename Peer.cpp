@@ -53,7 +53,6 @@ void Peer::display_peer_total(int x) {
                 transactions.at(j).display_info();
             }
         }
-
         //create integer for total transaction amount
         //loop thru transactions vector
         //for each transaction, add to total
