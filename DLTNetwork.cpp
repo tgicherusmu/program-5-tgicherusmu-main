@@ -73,9 +73,6 @@ void DLTNetwork::start() {
             }
         }
         else if(currLine.substr(0, 12)=="DISPLAY_USER"){
-            //for(int i = 0; i>users.size(); i++){
-              //  users.at(i)->display_info();
-            //}
             stringstream line(currLine);
             string userID;
             getline(line, userID,' ');
@@ -86,7 +83,7 @@ void DLTNetwork::start() {
                 }
             }
         }
-        else if(currLine.substr(0, 18)=="DISPLAY_PEER_TOTAL") {
+        else if(currLine.substr(0, 18)=="DISPLAY_PEER_TOTAL"){
             stringstream line(currLine);
             string peerID;
             int peerIDNum = stoi(peerID);

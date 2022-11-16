@@ -47,6 +47,7 @@ void Peer::display_info() {
     cout << "Name: " << *name << endl;
 }
 void Peer::display_peer_total(int x) {
+
     for (int i = 0; i < transactions.size(); i++) {
         if (transactions.at(i)->getAmount() == peerIDNum) {
             for (int j = 0; j < peers.size(); j++) {
