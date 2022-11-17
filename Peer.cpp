@@ -4,6 +4,7 @@
 
 #include "Peer.h"
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 
@@ -57,7 +58,9 @@ void Peer::display_peer_total() {
     int totalTransaction = 0;
     for (int i = 0; i < transactions.size(); i++) {
         totalTransaction += transactions.at(i)->getAmount();
+        cout << setprecision(2) << "Peer Total: $" << totalTransaction << " USD" << endl;
     }
+
 
     //create integer for total transaction amount
     //loop thru transactions vector
