@@ -20,7 +20,7 @@ void DLTNetwork::start() {
     string currLine;
     getline(input, currLine);
     while(!input.eof()) {
-        if(currLine.substr(0, 11)=="CREATE PEER") {
+        if(currLine.substr(0, 11)=="CREATE_PEER") {
             stringstream line(currLine);
             string id;
             string name;
@@ -29,7 +29,7 @@ void DLTNetwork::start() {
             getline(line, name);
             create_peer(stoi(id), name);
         }
-        else if(currLine.substr(0, 11)=="CREATE USER"){
+        else if(currLine.substr(0, 11)=="CREATE_USER"){
             stringstream line(currLine);
             string id;
             string name;
@@ -42,7 +42,7 @@ void DLTNetwork::start() {
             getline(line, peer);
             create_user(stoi(id), name, address, stoi(peer));
         }
-        else if(currLine.substr(0, 18)=="CREATE TRANSACTION"){
+        else if(currLine.substr(0, 18)=="CREATE_TRANSACTION"){
             stringstream line(currLine);
             string amount;
             string userFromId;
@@ -54,10 +54,10 @@ void DLTNetwork::start() {
             create_transaction(stod(amount), stoi(userFromId), stoi(userToId));
         }
         else if(currLine.substr(0, 11)=="DISPLAY_ALL"){
-            for(int i = 0; i>users.size(); i++){
+            for(int i = 0; i<users.size(); i++){
                 users.at(i)->display_info();
             }
-            for(int i = 0; i>peers.size(); i++){
+            for(int i = 0; i<peers.size(); i++){
                 peers.at(i)->display_info();
             }
         }
@@ -65,8 +65,9 @@ void DLTNetwork::start() {
             stringstream line(currLine);
             string peerID;
             getline(line, peerID,' ');
+            getline(line, peerID);
             int peerIDNum = stoi(peerID);
-            for(int i = 0; i>peers.size(); i++){
+            for(int i = 0; i<peers.size(); i++){
                 if(peers.at(i)->getID()==peerIDNum){
                     peers.at(i)->display_info();
                 }
@@ -76,8 +77,9 @@ void DLTNetwork::start() {
             stringstream line(currLine);
             string userID;
             getline(line, userID,' ');
+            getline(line, userID);
             int userIDNum = stoi(userID);
-            for(int i = 0; i>users.size(); i++){
+            for(int i = 0; i<users.size(); i++){
                 if(users.at(i)->getID()==userIDNum){
                     users.at(i)->display_info();
                 }
@@ -89,18 +91,15 @@ void DLTNetwork::start() {
             int peerIDNum = stoi(peerID);
             for (int i = 0; i < peers.size(); i++) {
                 if (peers.at(i)->getID() == peerIDNum) {
-                    display_peer_total(i);
+                    peers.at(i)->display_peer_total();
                 }
             }
         }
         else{
             cout << "Invalid statement" << endl;
         }
-        getline(input, currLine);
+       getline(input, currLine);
     }
-
-
-
 }
 
 void DLTNetwork::create_user(int id, string name, string address, int peer){

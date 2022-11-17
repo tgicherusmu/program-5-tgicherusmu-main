@@ -46,19 +46,23 @@ void Peer::display_info() {
     cout << "ID: " << *id << endl;
     cout << "Name: " << *name << endl;
 }
-void Peer::display_peer_total(int x) {
+void Peer::display_peer_total() {
+    //for (int i = 0; i < transactions.size(); i++) {
+    //  if (transactions.at(i)->getAmount() == peerIDNum) {
+    //    for (int j = 0; j < peers.size(); j++) {
+    //      transactions.at(j).display_info();
+    //}
 
+    //}
+    int totalTransaction = 0;
     for (int i = 0; i < transactions.size(); i++) {
-        if (transactions.at(i)->getAmount() == peerIDNum) {
-            for (int j = 0; j < peers.size(); j++) {
-                transactions.at(j).display_info();
-            }
-        }
-        //create integer for total transaction amount
-        //loop thru transactions vector
-        //for each transaction, add to total
-        //display total
+        totalTransaction += transactions.at(i)->getAmount();
     }
+
+    //create integer for total transaction amount
+    //loop thru transactions vector
+    //for each transaction, add to total
+    //display total
 }
 
 

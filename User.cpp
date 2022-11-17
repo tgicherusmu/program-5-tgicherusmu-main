@@ -51,6 +51,6 @@ int User::getPeer() const{
 void User::display_info() {
         cout << "ID: " << *id << endl;
         cout << "Name: " << *name << endl;
-        cout << "Address: " << *name << endl;
-        cout << "Home Peer ID: " << *name << endl;
+        cout << "Address: " << *address << endl;
+        cout << "Home Peer ID: " << *homePeerId << endl;
 }
