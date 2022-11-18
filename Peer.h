@@ -19,7 +19,6 @@ public:
     string getName() const;
     void addTransaction(Transaction*);
     void display_info();
-    //void display_peer(int);
     void display_peer_total();
 
 private:

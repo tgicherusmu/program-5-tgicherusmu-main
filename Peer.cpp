@@ -58,8 +58,8 @@ void Peer::display_peer_total() {
     int totalTransaction = 0;
     for (int i = 0; i < transactions.size(); i++) {
         totalTransaction += transactions.at(i)->getAmount();
-        cout << fixed << setprecision(2) << "Peer Total: $" << totalTransaction << " USD" << endl;
     }
+    cout << fixed << setprecision(2) << "Peer Total: $" << totalTransaction << " USD" << endl;
 
 
     //create integer for total transaction amount

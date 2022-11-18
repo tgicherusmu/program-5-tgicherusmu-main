@@ -20,6 +20,7 @@ void DLTNetwork::start() {
     string currLine;
     getline(input, currLine);
     while(!input.eof()) {
+        cout<< currLine << endl;
         if(currLine.substr(0, 11)=="CREATE_PEER") {
             stringstream line(currLine);
             string id;
@@ -61,6 +62,18 @@ void DLTNetwork::start() {
                 peers.at(i)->display_info();
             }
         }
+        else if(currLine.substr(0, 18)=="DISPLAY_PEER_TOTAL"){
+            stringstream line(currLine);
+            string peerID;
+            getline(line, peerID,' ');
+            getline(line, peerID);
+            int peerIDNum = stoi(peerID);
+            for (int i = 0; i < peers.size(); i++) {
+                if (peers.at(i)->getID() == peerIDNum) {
+                    peers.at(i)->display_peer_total();
+                }
+            }
+        }
         else if(currLine.substr(0, 12)=="DISPLAY_PEER"){
             stringstream line(currLine);
             string peerID;
@@ -82,16 +95,6 @@ void DLTNetwork::start() {
             for(int i = 0; i<users.size(); i++){
                 if(users.at(i)->getID()==userIDNum){
                     users.at(i)->display_info();
-                }
-            }
-        }
-        else if(currLine.substr(0, 18)=="DISPLAY_PEER_TOTAL"){
-            stringstream line(currLine);
-            string peerID;
-            int peerIDNum = stoi(peerID);
-            for (int i = 0; i < peers.size(); i++) {
-                if (peers.at(i)->getID() == peerIDNum) {
-                    peers.at(i)->display_peer_total();
                 }
             }
         }
